@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package transport;
+
+service Upload {
+
+    rpc UploadFile(stream UploadFileReq) returns (stream UploadFileResp){}
+
+}
+
+
+
+message UploadFileReq {
+    string name = 1;
+
+    bytes file = 2 ;
+}
+
+message UploadFileResp {
+    string message = 1;
+}
+
