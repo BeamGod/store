@@ -110,9 +110,89 @@ func (m *UploadFileResp) GetMessage() string {
 	return ""
 }
 
+type DownloadFileReq struct {
+	Path                 string   `protobuf:"bytes,1,opt,name=path,proto3" json:"path,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DownloadFileReq) Reset()         { *m = DownloadFileReq{} }
+func (m *DownloadFileReq) String() string { return proto.CompactTextString(m) }
+func (*DownloadFileReq) ProtoMessage()    {}
+func (*DownloadFileReq) Descriptor() ([]byte, []int) {
+	return fileDescriptor_a97e32c760ec1b28, []int{2}
+}
+
+func (m *DownloadFileReq) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DownloadFileReq.Unmarshal(m, b)
+}
+func (m *DownloadFileReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DownloadFileReq.Marshal(b, m, deterministic)
+}
+func (m *DownloadFileReq) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DownloadFileReq.Merge(m, src)
+}
+func (m *DownloadFileReq) XXX_Size() int {
+	return xxx_messageInfo_DownloadFileReq.Size(m)
+}
+func (m *DownloadFileReq) XXX_DiscardUnknown() {
+	xxx_messageInfo_DownloadFileReq.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DownloadFileReq proto.InternalMessageInfo
+
+func (m *DownloadFileReq) GetPath() string {
+	if m != nil {
+		return m.Path
+	}
+	return ""
+}
+
+type DownloadFileResp struct {
+	File                 []byte   `protobuf:"bytes,1,opt,name=file,proto3" json:"file,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DownloadFileResp) Reset()         { *m = DownloadFileResp{} }
+func (m *DownloadFileResp) String() string { return proto.CompactTextString(m) }
+func (*DownloadFileResp) ProtoMessage()    {}
+func (*DownloadFileResp) Descriptor() ([]byte, []int) {
+	return fileDescriptor_a97e32c760ec1b28, []int{3}
+}
+
+func (m *DownloadFileResp) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DownloadFileResp.Unmarshal(m, b)
+}
+func (m *DownloadFileResp) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DownloadFileResp.Marshal(b, m, deterministic)
+}
+func (m *DownloadFileResp) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DownloadFileResp.Merge(m, src)
+}
+func (m *DownloadFileResp) XXX_Size() int {
+	return xxx_messageInfo_DownloadFileResp.Size(m)
+}
+func (m *DownloadFileResp) XXX_DiscardUnknown() {
+	xxx_messageInfo_DownloadFileResp.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DownloadFileResp proto.InternalMessageInfo
+
+func (m *DownloadFileResp) GetFile() []byte {
+	if m != nil {
+		return m.File
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*UploadFileReq)(nil), "transport.UploadFileReq")
 	proto.RegisterType((*UploadFileResp)(nil), "transport.UploadFileResp")
+	proto.RegisterType((*DownloadFileReq)(nil), "transport.DownloadFileReq")
+	proto.RegisterType((*DownloadFileResp)(nil), "transport.DownloadFileResp")
 }
 
 func init() {
@@ -120,17 +200,20 @@ func init() {
 }
 
 var fileDescriptor_a97e32c760ec1b28 = []byte{
-	// 152 bytes of a gzipped FileDescriptorProto
+	// 205 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x2f, 0x29, 0x4a, 0xcc,
 	0x2b, 0x2e, 0xc8, 0x2f, 0x2a, 0xd1, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0x84, 0x0b, 0x28,
 	0x99, 0x73, 0xf1, 0x86, 0x16, 0xe4, 0xe4, 0x27, 0xa6, 0xb8, 0x65, 0xe6, 0xa4, 0x06, 0xa5, 0x16,
 	0x0a, 0x09, 0x71, 0xb1, 0xe4, 0x25, 0xe6, 0xa6, 0x4a, 0x30, 0x2a, 0x30, 0x6a, 0x70, 0x06, 0x81,
 	0xd9, 0x20, 0xb1, 0xb4, 0xcc, 0x9c, 0x54, 0x09, 0x26, 0x05, 0x46, 0x0d, 0x9e, 0x20, 0x30, 0x5b,
 	0x49, 0x8b, 0x8b, 0x0f, 0x59, 0x63, 0x71, 0x81, 0x90, 0x04, 0x17, 0x7b, 0x6e, 0x6a, 0x71, 0x71,
-	0x62, 0x3a, 0x4c, 0x33, 0x8c, 0x6b, 0x14, 0xc8, 0xc5, 0x06, 0x51, 0x2b, 0xe4, 0xce, 0xc5, 0x85,
-	0xd0, 0x25, 0x24, 0xa1, 0x87, 0x70, 0x19, 0x8a, 0x2b, 0xa4, 0x24, 0x71, 0xc8, 0x14, 0x17, 0x28,
-	0x31, 0x68, 0x30, 0x1a, 0x30, 0x26, 0xb1, 0x81, 0x7d, 0x62, 0x0c, 0x08, 0x00, 0x00, 0xff, 0xff,
-	0xc1, 0xf2, 0xe2, 0x99, 0xdc, 0x00, 0x00, 0x00,
+	0x62, 0x3a, 0x4c, 0x33, 0x8c, 0xab, 0xa4, 0xca, 0xc5, 0xef, 0x92, 0x5f, 0x9e, 0x87, 0x66, 0x4d,
+	0x41, 0x62, 0x49, 0x06, 0xcc, 0x1a, 0x10, 0x5b, 0x49, 0x8d, 0x4b, 0x00, 0x55, 0x59, 0x71, 0x01,
+	0xdc, 0x6a, 0x46, 0x84, 0xd5, 0x46, 0xf3, 0x18, 0xb9, 0xd8, 0x20, 0x76, 0x0b, 0xb9, 0x73, 0x71,
+	0x21, 0x5c, 0x21, 0x24, 0xa1, 0x87, 0xf0, 0x29, 0x8a, 0xaf, 0xa4, 0x24, 0x71, 0xc8, 0x14, 0x17,
+	0x28, 0x31, 0x68, 0x30, 0x1a, 0x30, 0x0a, 0x79, 0x73, 0x71, 0xb9, 0xe4, 0xc3, 0x0d, 0x92, 0x42,
+	0x52, 0x8e, 0xe6, 0x72, 0x29, 0x69, 0x9c, 0x72, 0x30, 0xc3, 0x92, 0xd8, 0xc0, 0xc1, 0x6c, 0x0c,
+	0x08, 0x00, 0x00, 0xff, 0xff, 0x44, 0x13, 0x61, 0xab, 0x79, 0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -146,6 +229,7 @@ const _ = grpc.SupportPackageIsVersion6
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type UploadClient interface {
 	UploadFile(ctx context.Context, opts ...grpc.CallOption) (Upload_UploadFileClient, error)
+	DoloadFile(ctx context.Context, opts ...grpc.CallOption) (Upload_DoloadFileClient, error)
 }
 
 type uploadClient struct {
@@ -187,9 +271,41 @@ func (x *uploadUploadFileClient) Recv() (*UploadFileResp, error) {
 	return m, nil
 }
 
+func (c *uploadClient) DoloadFile(ctx context.Context, opts ...grpc.CallOption) (Upload_DoloadFileClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_Upload_serviceDesc.Streams[1], "/transport.Upload/DoloadFile", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &uploadDoloadFileClient{stream}
+	return x, nil
+}
+
+type Upload_DoloadFileClient interface {
+	Send(*DownloadFileReq) error
+	Recv() (*DownloadFileResp, error)
+	grpc.ClientStream
+}
+
+type uploadDoloadFileClient struct {
+	grpc.ClientStream
+}
+
+func (x *uploadDoloadFileClient) Send(m *DownloadFileReq) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *uploadDoloadFileClient) Recv() (*DownloadFileResp, error) {
+	m := new(DownloadFileResp)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // UploadServer is the server API for Upload service.
 type UploadServer interface {
 	UploadFile(Upload_UploadFileServer) error
+	DoloadFile(Upload_DoloadFileServer) error
 }
 
 // UnimplementedUploadServer can be embedded to have forward compatible implementations.
@@ -198,6 +314,9 @@ type UnimplementedUploadServer struct {
 
 func (*UnimplementedUploadServer) UploadFile(srv Upload_UploadFileServer) error {
 	return status.Errorf(codes.Unimplemented, "method UploadFile not implemented")
+}
+func (*UnimplementedUploadServer) DoloadFile(srv Upload_DoloadFileServer) error {
+	return status.Errorf(codes.Unimplemented, "method DoloadFile not implemented")
 }
 
 func RegisterUploadServer(s *grpc.Server, srv UploadServer) {
@@ -230,6 +349,32 @@ func (x *uploadUploadFileServer) Recv() (*UploadFileReq, error) {
 	return m, nil
 }
 
+func _Upload_DoloadFile_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(UploadServer).DoloadFile(&uploadDoloadFileServer{stream})
+}
+
+type Upload_DoloadFileServer interface {
+	Send(*DownloadFileResp) error
+	Recv() (*DownloadFileReq, error)
+	grpc.ServerStream
+}
+
+type uploadDoloadFileServer struct {
+	grpc.ServerStream
+}
+
+func (x *uploadDoloadFileServer) Send(m *DownloadFileResp) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *uploadDoloadFileServer) Recv() (*DownloadFileReq, error) {
+	m := new(DownloadFileReq)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 var _Upload_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "transport.Upload",
 	HandlerType: (*UploadServer)(nil),
@@ -238,6 +383,12 @@ var _Upload_serviceDesc = grpc.ServiceDesc{
 		{
 			StreamName:    "UploadFile",
 			Handler:       _Upload_UploadFile_Handler,
+			ServerStreams: true,
+			ClientStreams: true,
+		},
+		{
+			StreamName:    "DoloadFile",
+			Handler:       _Upload_DoloadFile_Handler,
 			ServerStreams: true,
 			ClientStreams: true,
 		},

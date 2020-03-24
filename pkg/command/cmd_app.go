@@ -4,8 +4,8 @@ import "C"
 import (
 	"fmt"
 	"github.com/urfave/cli/v2"
-	"store/clients"
-	"store/server"
+	"store/clients/upload"
+	server2 "store/services/store/server"
 )
 
 func NewUrfaveApp(types string) *cli.App {
@@ -52,7 +52,7 @@ func newUploadUrfaveApp() *cli.App {
 			config.fileName = c.String("name")
 			config.tag = c.String("tag")
 			fmt.Println(config)
-			cli := clients.NewUploadFileClient(config.address)
+			cli := upload.NewUploadFileClient(config.address)
 			cli.UploadFile(config.path , config.fileName)
 			return nil
 		},
@@ -75,7 +75,7 @@ func NewUploadFileServerUrfave()  *cli.App{
 		Action: func(c *cli.Context) error {
 			fmt.Println(c.String("port"))
 			fmt.Println(c.String("path"))
-			app := server.NewUploadFileApp(c.String("port") , c.String("path"))
+			app := server2.NewUploadFileApp(c.String("port") , c.String("path"))
 			app.Run()
 			return nil
 		},
